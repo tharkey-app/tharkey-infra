@@ -7,18 +7,33 @@
 ## Deploy the infrastructure
 
 ```
-set ARM_CLIENT_ID=...
-set ARM_CLIENT_SECRET=...
-set ARM_SUBSCRIPTION_ID=...
-set ARM_TENANT_ID=...
+set SCW_ACCESS_KEY=...
+set SCW_SECRET_KEY=...
 
+cd roots\tharkey-infra-static
+terraform init
 terraform apply
+cd ..\..
+
+cd roots\tharkey-infra-core
+terraform init
+terraform apply
+cd ..\..
 
 set KUBECONFIG=kubeconfig
 kubectl get nodes
+
+cd roots\tharkey-infra-compute
+terraform init
+terraform apply
+cd ..\..
+
+kubectl apply -f test.yml
 ```
 
 ```
+cd roots\tharkey-infra-core
 terraform destroy
+cd ..\..
 ```
 
