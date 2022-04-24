@@ -32,6 +32,10 @@ kubectl apply -f test.yml
 ```
 
 ```
+cd roots\tharkey-infra-compute
+terraform destroy
+cd ..\..
+
 cd roots\tharkey-infra-core
 terraform destroy
 cd ..\..
